@@ -1,0 +1,251 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+<script>
+  let images = ["https://github.com/humbertoroa/dice_graphics/raw/master/1.png",
+    "https://github.com/humbertoroa/dice_graphics/raw/master/2.png",
+    "https://github.com/humbertoroa/dice_graphics/raw/master/3.png",
+    "https://github.com/humbertoroa/dice_graphics/raw/master/4.png",
+    "https://github.com/humbertoroa/dice_graphics/raw/master/5.png",
+    "https://github.com/humbertoroa/dice_graphics/raw/master/6.png"];
+  let dice = document.querySelectorAll("img");
+
+  function toggle_info(){
+    Array.from(document.querySelectorAll('.infobox')).forEach(function (el) {
+      el.classList.toggle("hidden");
+    });
+  }
+
+  function flip(el) {
+    el.classList.toggle("flipped")
+  }
+  function reset() {
+    Array.from(document.querySelectorAll('.number')).forEach(function (el) {
+      el.classList.remove('flipped');
+    });
+  }
+
+  function roll() {
+    setTimeout(function () {
+      let dieOneValue = Math.floor(Math.random() * 6);
+      let dieTwoValue = Math.floor(Math.random() * 6);
+      console.log(dieOneValue, dieTwoValue);
+      document.querySelector("#die-1").setAttribute("src", images[dieOneValue]);
+      document.querySelector("#die-2").setAttribute("src", images[dieTwoValue]);
+    },
+    );
+  }
+  roll();
+</script>
+<style>
+  .box {
+    background-color: lightskyblue;
+    height: 90vh;
+    width: 90vw;
+    margin: auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  label {
+    text-shadow: 1px 1px 2px slategrey;
+    position: absolute;
+    right: 0.5em;
+    top: 1em;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+    z-index: 2;
+    user-select: none;
+  }
+
+  /* Default State */
+  .infobox {
+    color-scheme: dark;
+    background: rgba(0, 0, 0, 0.8);
+    top: 0;
+    right: 0;
+    backdrop-filter: blur(6px);
+    width: 400px;
+    max-height: 80vh;
+    font-size: 1.2em;
+    color: white;
+    padding: 1em;
+    padding-top: 3em;
+    position: absolute;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* Hide horizontal scrollbar */
+    border-bottom-left-radius: 0.5em;
+    z-index: 1;
+  }
+
+  ul {
+    list-style-position: outside;
+  }
+
+  li {
+    margin: 1em;
+  }
+
+  /* Toggled State */
+  .hidden {
+    display: none;
+  }
+
+  .holder {
+    width: 90%;
+    height: 34%;
+    margin: auto;
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .number {
+    background-color: lightyellow;
+    border-radius: 0.05em;
+    width: 10%;
+    font-size: 8vw;
+    display: flex;
+    align-items: center;
+    /* Vertical center alignment */
+    justify-content: center;
+    /* Horizontal center alignment */
+    text-align: center;
+    transition-timing-function: ease;
+    transition-duration: 50ms;
+    font-family: 'Rockwell', 'Arvo', Courier Bold, Courier, Georgia, Times, Times New Roman, serif;
+    box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.2),
+      inset 0px -5px 0px 0px rgba(0, 0, 0, 0.3),
+      inset 0px 2px 0px 0px rgba(255, 255, 255, 0.5);
+    user-select: none;
+  }
+
+  .flipped {
+    color: transparent;
+    transform: translate(0, 10%);
+  }
+
+  .roller {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .dice-wrapper {
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  button {
+    background-color: green;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    padding: 15px 0;
+    min-width: 8vw;
+    min-height: 5vw;
+    letter-spacing: 0.1em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.8vw;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+
+  button:active {
+    transform: translate(0, 1%);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  }
+
+  #reset {
+    background-color: crimson;
+  }
+
+  /* fallback */
+  @font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialicons/v98/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+  }
+  img{
+    max-width: 16vw;
+    max-height: 30vh;
+  }
+  .mdi {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+
+<body>
+  <div class="box">
+    <div class="infobox hidden">
+      <ul>
+        <li>Scopo del gioco è chiudere la scatola. Per farlo, occorre abbassare i tasti su cui sono indicati i numeri da
+          1 a 9. Clicca i tasti per abbassarli.</li>
+        <li>Nel suo turno, un giocatore tira due dadi. La somma dei numeri riportati sui dadi indica la somma dei tasti
+          che possono essere abbassati. Clicca <nobr><i class="mdi" style="font-size: 1.2em;">sync</i> Lancia</nobr> per
+          tirare i dadi.</li>
+        <li>Una volta abbassati i tasti, il giocatore tira nuovamente i dadi e dovrà comporre la somma ottenuta
+          abbassando i tasti che non sono ancora abbassati. </li>
+        <li>Quando non è più possibile comporre la somma indicata sui dadi abbassando i tasti rimasti, allora il turno
+          del giocatore termina. Il giocatore ottiene un punteggio pari alla somma dei tasti che sono ancora alzati.
+          Clicca <nobr><i class="mdi" style="font-size: 1.2em;">undo</i> Reset</nobr> per rialzare tutti i tasti.</li>
+        <li>Se uno dei giocatori riesce a chiudere la scatola abbassando tutti i tasti, allora vince
+          il gioco. Altrimenti, il giocatore con il punteggio più basso vince.</li>
+      </ul>
+    </div>
+    <label for="info-toggle" onclick="toggle_info(this)"><i class="mdi">info_outline</i></label>
+    <div class="holder">
+      <div class="number" onclick="flip(this)">1</div>
+      <div class="number" onclick="flip(this)">2</div>
+      <div class="number" onclick="flip(this)">3</div>
+      <div class="number" onclick="flip(this)">4</div>
+      <div class="number" onclick="flip(this)">5</div>
+      <div class="number" onclick="flip(this)">6</div>
+      <div class="number" onclick="flip(this)">7</div>
+      <div class="number" onclick="flip(this)">8</div>
+      <div class="number" onclick="flip(this)">9</div>
+    </div>
+    <div class="roller">
+      <div class="dice-wrapper">
+        <button onclick="roll()">
+          <i class="mdi">sync</i><br />
+          Lancia</button>
+
+        <img id="die-1">
+        <img id="die-2">
+        <button id="reset" onclick="reset()"><i class="mdi">undo</i><br />Reset</button>
+
+      </div>
+      <p id="total"></p>
+      <div class="buttons">
+      </div>
+    </div>
+  </div>
+</body>
