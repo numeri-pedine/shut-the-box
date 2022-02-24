@@ -33,19 +33,18 @@
         </div>
         <div class="roller">
             <div class="dice-wrapper">
-                <button onclick="roll()">
-          <i class="mdi">sync</i><br />
-          Lancia</button>
 
                 <img class="" id="die-1" src="img/1.png">
                 <img class="" id="die-2" src="img/1.png">
-                <button id="reset" onclick="reset()"><i class="mdi">undo</i><br />Reset</button>
 
             </div>
-            <p id="total"></p>
-            <div class="buttons">
-            </div>
+            <button class="btn-lancia" onclick="roll()">
+  <i class="mdi">sync</i><span>
+  Lancia</span></button>
+            <button id="reset" onclick="reset()"><i class="mdi">undo</i><span>Reset</span></button>
+
         </div>
+    </div>
     </div>
 </body>
 <script src="script.js"></script>

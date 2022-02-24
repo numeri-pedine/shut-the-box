@@ -65,17 +65,19 @@ li {
 
 .holder {
     width: 90%;
-    height: 34%;
+    min-height: 60%;
     margin: auto;
     margin-top: 1em;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
 }
 
 .number {
     background-color: lightyellow;
     border-radius: 0.05em;
-    width: 10%;
+    width: 90%;
+    height: 10%;
     font-size: 8vw;
     display: flex;
     align-items: center;
@@ -92,20 +94,26 @@ li {
 
 .flipped {
     color: transparent;
-    transform: translate(0, 10%);
+    transform: translate(10%, 0%);
 }
 
 .roller {
-    width: 75%;
+    width: 90%;
     display: flex;
+    margin-top: 2em;
+    gap: 3%;
     flex-direction: column;
+    justify-content: center;
+    justify-content: center;
     align-items: center;
+    flex-grow: 1;
 }
 
 .dice-wrapper {
     width: 90%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 10%;
     align-items: center;
 }
 
@@ -115,11 +123,14 @@ button {
     outline: none;
     color: #ffffff;
     padding: 15px 0;
-    min-width: 8vw;
+    min-width: 50vw;
     min-height: 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     letter-spacing: 0.1em;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 1.8vw;
+    font-size: 1rem;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
@@ -146,10 +157,14 @@ button:active {
 }
 
 img {
-    max-width: 16vw;
+    max-width: 25vw;
     max-height: 16vh;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     border-radius: 0.6em;
+}
+
+br {
+    display: none
 }
 
 .shake {
@@ -196,4 +211,31 @@ img {
     word-wrap: normal;
     direction: ltr;
     -webkit-font-smoothing: antialiased;
+}
+
+@media screen and (min-width: 520px) {
+    .holder {
+        flex-direction: row;
+        height: 34%;
+    }
+    .number {
+        width: 10%;
+        height: 90%;
+    }
+    .flipped {
+        transform: translate(0%, 10%);
+    }
+    .roller {
+        flex-direction: row;
+    }
+    img {
+        max-width: 16vw;
+    }
+    button {
+        min-width: 15vw;
+        flex-direction: column;
+    }
+    .btn-lancia {
+        order: -1;
+    }
 }
